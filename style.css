@@ -1,0 +1,275 @@
+/*
+--- 01 TYPOGRAPHY SYSTEM
+
+- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Font weights
+Default: 400
+Medium: 500
+Semi-bold: 600
+Bold: 700
+
+- Line heights
+Default: 1
+Small: 1.05
+Medium: 1.2
+Paragraph default: 1.6
+Large: 1.8
+
+- Letter spacing
+-0.5px
+0.75px
+
+--- 02 COLORS
+
+- Primary: #FCDEBE
+- Tints:#E5C687 secondary color
+#f5e8cf color for font 
+#b79e6c color for description drinks
+- Shades: 
+#09814A  order buttons
+#FE5E41 buttons minus
+#2F2504 buttons add
+
+- Accents:
+- Greys
+#888
+#767676 (lightest grey allowed on #fff)
+#6f6f6f (lightest grey allowed on #fdf2e9)
+#555
+#333
+
+--- 05 SHADOWS
+
+0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+
+--- 06 BORDER-RADIUS
+
+Default: 9px
+Medium: 11px
+
+--- 07 WHITESPACE
+
+- Spacing system (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
+
+.drinks-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 2rem;
+    /* border: 5px solid #cab298;
+    border-radius: 2rem; */
+    height: 70vh;
+}
+.menu-container{
+    display: grid;
+    justify-items: center;
+    max-width: 100rem;
+    max-height: 80rem;
+}
+
+.drink-container{
+    /* background-color:#FCDEBE; */
+    padding: 2rem;
+  
+}
+.drink-image{
+    width:20rem;
+    height:18rem;
+   
+}
+
+.drink-description{
+    max-width: 20rem;
+    max-height: 35rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: hidden;
+    border-radius: 11px;
+    margin: 2rem;
+    background-color:#b79e6c;
+    box-shadow: 2px 2px 2px 0px #a5a4a498;
+}
+.tag{
+    font-size: 2rem;
+    line-height: 1.2;
+    color:#f5e8cf;
+}
+.tag-type{
+    line-height: 1.2;
+    font-size: 1.6rem;
+    color:#f5e8cf;
+}
+.price{
+    font-size: 1.6rem;
+    color:#f5e8cf;
+}
+.btn-order{
+    margin-top: 2rem;
+    background-color: #09814A; /* Green */
+    border: none;
+    color: #f5e8cf;
+    padding: 5px 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.8rem;
+    width: 100%;
+    transition: 0.4s;
+}
+:disabled{
+    opacity:0.5;
+    cursor: not-allowed;
+}
+.btn-order:hover{
+    background-color:#f5e8cf;
+    color:#09814A;
+}
+
+
+.drink-title{
+    color: #ddd1ba;
+}
+/* ORDER SECTION */
+.order-container{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+    background-color: #E5C687;
+    max-height: 100rem;
+    max-width: 100rem;
+    padding: 2rem;
+    border-radius: 2rem;;
+}
+.order-list{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.orderd-drink{
+    display: grid;
+    background-color: #b79e6c;
+    min-width: 50rem;
+    min-height: 8rem;
+    border-radius: 11px;
+    overflow: hidden;
+    animation-name: slide-in;
+    animation-duration: 0.3s;
+}
+.orderd-drink-removed{
+    animation:0.3s slide-out;
+}
+
+.orderd-drink-img{
+    max-width:10rem;
+    max-height:10rem;
+}
+
+.order-tag,.order-price{
+    align-self: center;
+    justify-self: center;
+    font-size: 2rem;
+    line-height: 1.2;
+    color:#f5e8cf;
+}
+.btn-quantity{
+    color: #f5e8cf;
+    font-size: 2rem;
+    font-weight: 700;
+    justify-self: center;
+    align-self: center;
+    border-style: none;
+    width:5rem;
+    height:5rem;
+    border-radius: 30px;
+}
+.btn-minus{
+    background-color:#FE5E41;
+    transition: 0.4s;
+}
+.btn-minus:hover{
+    background-color:#f5e8cf;
+    color:#FE5E41;
+}
+
+.btn-add{
+    background-color:#2F2504;
+    transition: 0.4s;
+}
+.btn-add:hover{
+    background-color:#f5e8cf;
+    color:#2F2504;
+}
+.btn-order-process{
+    display: flex;
+    justify-content: space-between;
+    /* background-color: aquamarine; */
+    width: 40rem;
+
+}
+.btn-remove{
+    background-color: #767676;
+    transition: 0.4s;
+}
+.btn-remove:hover{
+    background-color: #f5e8cf;
+    color: #767676;
+}
+.btn-clear,.btn-payorder{
+    width: 10rem;
+    height: 5rem;
+    border-style: none;
+    border-radius: 11px;
+    color:#f5e8cf;
+    font-weight: 500;
+   font-size: 1.6rem;
+}
+.btn-payorder{
+background-color: #09814A;
+transition: 0.4s;
+}
+.btn-payorder:hover{
+background-color:#f5e8cf;
+color: #09814A;
+    }
+.btn-clear{
+    background-color: #FE5E41;
+    transition: 0.4s;
+}
+.btn-clear:hover{
+    color: #FE5E41;
+    background-color: #f5e8cf;
+}
+.order-total{
+    align-self: center;
+    justify-self: center;
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+/* KEYFRAMES */
+@keyframes slide-in {
+    from{
+        margin-left: -200px;
+        margin-right:200px;
+        opacity:0;
+    }
+    to{
+        margin-left:0;
+        margin-right:0;
+        opacity: 1;
+    }
+}
+@keyframes slide-out{
+    to{
+        margin-left: 200px;
+        margin-right:-200px;
+        opacity:0;
+    }   
+}

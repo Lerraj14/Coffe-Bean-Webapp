@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="general.css">
+    <script type='module' defer src="controller.js"></script>
+    <title>Document</title>
+</head>
+<body>  
+    <header class="header-container">
+        <h1 class="heading-primary">Beans 'n Cream Cafe</h1>
+        <h2 class="heading-secondary">Coffee & Tea</h2>
+    </header>
+    <div class="container two-column">
+        <div class=" drinks-container">
+            <h3 class=" heading-tertiary drink-title">COFFEE</h3>
+            <div class="drink-content">
+            <div class="menu-container three-column-equal">
+                <div class="drink-container">
+                <div class="drink-description">
+                <img src="https://thelittlestcrumb.com/wp-content/uploads/salted-caramel-macchiato-featured-image-1.jpg"alt="Coffe Machiatto" class="drink-image">
+                <span class="tag">Macchiato</span>
+                <p class="tag-type">Coffe</p>
+                <p class="price">₱80</p>  
+                <button class="btn-order">Add to order</button>
+                </div>
+                </div>
+                <div class="drink-container">
+                    <div class="drink-description">
+                    <img src="https://coffeeaffection.com/wp-content/uploads/2021/02/does-a-cappuccino-have-caffeine.jpg"alt="Cappuccino" class="drink-image">
+                    <span class="tag">Cappuccino</span>
+                    <p class="tag-type">Coffe & Latte</p>
+                    <p class="price">₱90</p>  
+                    <button class="btn-order">Add to order</button>
+                    </div>
+                </div>
+                <div class="drink-container">
+                    <div class="drink-description">
+                    <img src="https://shottbeverages.com/wp-content/uploads/2020/11/Flamed-Orange-Mochaccino-720x720-c-default.jpg"alt="Mochaccino" class="drink-image">
+                    <span class="tag">Mochaccino</span>
+                    <p class="tag-type">Coffe</p>
+                    <p class="price">₱70</p>  
+                    <button class="btn-order">Add to order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="order-container">
+            <h3 class="heading-tertiary">Order Summary</h3>
+        <div class="order-list">
+            <!-- <div class="orderd-drink seven-column-equal">
+                <img src="https://shottbeverages.com/wp-content/uploads/2020/11/Flamed-Orange-Mochaccino-720x720-c-default.jpg"alt="Mochaccino" class="orderd-drink-img">
+                <span class="order-tag">Cappuccino</span>
+                <span class="order-price">₱90</span>
+                <button class="btn-quantity btn-minus">-</button>
+                <span class="order-tag">1</span>
+                <button class="btn-quantity btn-add">+</button>
+            </div> -->
+        </div>
+            <div class="btn-order-process">
+                <button class='btn-clear'>Clear</button>
+                <span class="order-total">Total: ₱</span>
+                <button class='btn-payorder'>Pay order </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
