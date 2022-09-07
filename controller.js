@@ -13,6 +13,9 @@
     const lblTotalBill=document.querySelector('.order-total');
     let orderdDrinks=JSON.parse(localStorage.getItem('drinks'))||[];
     let Totalprice=0;
+    // let addQuantity = [];
+    // let quantityObj = {};
+
     const reduceandRemoveDrink=function(drinkdetail,buttonstatus,productdetails){
         drinkdetail.classList.add('orderd-drink-removed');
         setTimeout(()=>drinkdetail.remove(),300);
@@ -26,6 +29,7 @@
         lblQuantityDOM.innerText=productdetails.quantity;
         lblOrderPrice.innerText=`₱${+price*productdetails.quantity}`;
         localStorage.setItem('drinks',JSON.stringify(orderdDrinks));
+
     };
 
     const generateMarkupOfDrinks=function(productDetails){
@@ -56,6 +60,8 @@
                 console.log(Totalprice+=price);
                 productdetails.quantity+=1;
                 generateDrinkMarkup(lblQuantityDOM,lblOrderPrice,productdetails,price); 
+                // addQuantity.push(Number(lblOrderPrice.innerText.slice(1)))
+                // console.log(addQuantity);
                 })
                  // USED for Reducing drink quatity 
                 drink.querySelector('.btn-minus').addEventListener('click',()=>{
@@ -78,6 +84,10 @@
             }
         });
     }; 
+
+    // quantityObj.quantity=Number(lblOrderPrice.innerText.slice(1));
+    // console.log(addQuantity);
+
     // Showing the order on the DOM 
     const addViewOrder=()=>{
         //loops on each button and listen to each click event
@@ -87,11 +97,12 @@
             image:productDOM.querySelector('.drink-image').getAttribute('src'),
             name:productDOM.querySelector('.tag').innerHTML,
             price:productDOM.querySelector('.price').innerHTML,
-            quantity:1.
+            quantity:1
         };
         const isInCart=orderdDrinks.filter(carItems=>carItems.name===product.name).length>0;
         if(!isInCart){
             generateMarkupOfDrinks(product);
+
             orderdDrinks.push(product);
             // store date to local storage
             localStorage.setItem('drinks',JSON.stringify(orderdDrinks));
@@ -100,10 +111,18 @@
             btnControls(drinkItemDOM,product,orederButtonDom);
         }
         orederButtonDom.innerHTML='Orderd';
-        Totalprice=Number(product.price.slice(1));
-        console.log(Totalprice);
+        // const totalArr=orderdDrinks.map((el)=>Number(el.price.slice(1)));
+        // console.log(totalArr);
+        // let totalAmount=totalArr.length!=0?totalArr.reduce((curr,accu)=>curr+accu):'';
+        // addQuantity.push(...totalArr);
+        // console.log(addQuantity);
+        // console.log(totalAmount);
     }));
     };
+
+
+
+
     // Checking local storage for stored drinks
     if(orderdDrinks.length>0){
         orderdDrinks.forEach((drink)=>{
@@ -119,6 +138,7 @@
         })
         });
     }
+
 addViewOrder();
 
 
