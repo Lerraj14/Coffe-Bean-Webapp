@@ -57,8 +57,9 @@
                 // console.log(Totalprice=Number(lblOrderPrice.innerText.slice(1)));
                 // USED for adding drink quatity 
                 drink.querySelector('.btn-add').addEventListener('click',()=>{
-                console.log(Totalprice+=price);
+                // console.log(Totalprice+=price);
                 productdetails.quantity+=1;
+                countOrderTotal();
                 generateDrinkMarkup(lblQuantityDOM,lblOrderPrice,productdetails,price); 
                 // addQuantity.push(Number(lblOrderPrice.innerText.slice(1)))
                 // console.log(addQuantity);
@@ -66,7 +67,8 @@
                  // USED for Reducing drink quatity 
                 drink.querySelector('.btn-minus').addEventListener('click',()=>{
                     productdetails.quantity-=1;
-                    console.log(Totalprice-=price);
+                    // console.log(Totalprice-=price);
+                    countOrderTotal();
                     // guard Clause to avoid negative quantity
                     if(productdetails.quantity<=0)
                         reduceandRemoveDrink(drink,buttonstatus,productdetails);
@@ -75,10 +77,12 @@
                   // USED for Removing drink  in the DOM
                   drink.querySelector('.btn-remove').addEventListener('click',()=>{
                     reduceandRemoveDrink(drink,buttonstatus,productdetails);
+                    countOrderTotal();
                 });
                  // USED for CLearing all the drink menu in the DOM 
                 clearBtn.addEventListener('click',function(){
                     reduceandRemoveDrink(drink,buttonstatus,productdetails);
+                    
                 });   
 
             }
@@ -111,6 +115,7 @@
             btnControls(drinkItemDOM,product,orederButtonDom);
         }
         orederButtonDom.innerHTML='Orderd';
+        countOrderTotal();
         // const totalArr=orderdDrinks.map((el)=>Number(el.price.slice(1)));
         // console.log(totalArr);
         // let totalAmount=totalArr.length!=0?totalArr.reduce((curr,accu)=>curr+accu):'';
@@ -137,10 +142,24 @@
             }
         })
         });
+        countOrderTotal();
     }
 
 addViewOrder();
 
+function checkOut(){
+
+}
+
+// function for adding label amount 
+function countOrderTotal(){
+    let orderTotal=0;
+    orderdDrinks.forEach((drinItems)=>{
+        orderTotal+=drinItems.quantity*Number(drinItems.price.slice(1));
+    })
+    lblTotal.innerText=`Total ₱: ${orderTotal}`;
+    console.log(orderTotal);
+}
 
 
 

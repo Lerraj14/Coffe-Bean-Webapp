@@ -249,8 +249,10 @@ color: #09814A;
 .order-total{
     align-self: center;
     justify-self: center;
+    border: none;
     font-size: 2rem;
     line-height: 1.2;
+    background-color: #E5C687;
 }
 
 /* KEYFRAMES */
