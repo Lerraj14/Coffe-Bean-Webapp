@@ -7,14 +7,14 @@
     const drinkDesription=document.querySelectorAll('.drink-description');
     const btnAddQuantity=document.querySelector('.btn-add');
     const btnMinusQuantity=document.querySelector('.btn-minus');
+    const btnPayOrder=document.querySelector('.btn-payorder')
     const quantityLabel=document.querySelector('.order-tag');
     const lblTotal=document.querySelector('.order-total');
     const cofeeName=document.querySelectorAll('.tag');
     const lblTotalBill=document.querySelector('.order-total');
     let orderdDrinks=JSON.parse(localStorage.getItem('drinks'))||[];
     let Totalprice=0;
-    // let addQuantity = [];
-    // let quantityObj = {};
+
 
     const reduceandRemoveDrink=function(drinkdetail,buttonstatus,productdetails){
         drinkdetail.classList.add('orderd-drink-removed');
@@ -84,6 +84,11 @@
                     reduceandRemoveDrink(drink,buttonstatus,productdetails);
                     
                 });   
+                btnPayOrder.addEventListener('click',function(){
+                    // paypalFunction();
+                    checkOut();
+                });
+
 
             }
         });
@@ -147,9 +152,39 @@
 
 addViewOrder();
 
-function checkOut(){
 
-}
+{/* <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="JQJJH7KJS3W8N">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form> */}
+
+
+
+
+function checkOut(){
+let paypalFormHTML=`
+<form id="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_cart">
+<input type="hidden" name="upload" value="1">
+<input type="hidden" name="business" value="jarreld14@gmail.com">
+`
+orderdDrinks.forEach((orderdDrinks,index) => {
+    paypalFormHTML+=`
+    <input type="hidden" name="item_name_${index}" value=${orderdDrinks.name}>
+    <input type="hidden" name="amount_${index}" value=${orderdDrinks.price}>
+    <input type="hidden" name="quantity_${index}" value=${orderdDrinks.quantity}>
+    </form>`  
+});
+
+paypalFormHTML+=`<input type='submit" value="Paypal">
+<div class="overlay"></div>
+</form>`;
+document.querySelector('body').insertAdjacentHTML('beforeend',paypalFormHTML)
+document.getElementById("paypal-form").submit();
+};
+
 
 // function for adding label amount 
 function countOrderTotal(){
@@ -163,3 +198,55 @@ function countOrderTotal(){
 
 
 
+const paypalFunction=function(){
+paypal.Buttons({
+    createOrder:function(data,actions){
+    
+        return actions.order.create({
+            purchase_units:[{
+                amount:{
+                    value:'200'
+                }
+            }]
+        })
+    },
+    onApprove:function(data,actions){
+        console.log('Data:'+data);
+        console.log('Action:'+actions);
+        return actions.order.capture().then(function(details){
+            console.log(details.payer.name.given_name);
+        })
+    }
+   }).render("#paypal-button-container");
+}
+
+
+
+orderdDrinks.forEach((orderdDrinks,index) => {
+    paypalFormHTML+=`
+    <input type="hidden" name="item_name_${index}" value=${orderdDrinks.name}>
+    <input type="hidden" name="amount_${index}" value=${orderdDrinks.price}>
+    <input type="hidden" name="quantity_${index}" value=${orderdDrinks.quantity}>
+    </form>`  
+});
+
+paypal.Buttons({
+    createOrder: function(data, actions) {
+      // This function sets up the details of the transaction, including the amount and line item details.
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '0.01'
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      // This function captures the funds from the transaction.
+      return actions.order.capture().then(function(details) {
+        // This function shows a transaction success message to your buyer.
+        alert('Transaction completed by ' + details.payer.name.given_name);
+      });
+    }
+  }).render('#paypal-button-container');
+  //This function displays payment buttons on your web page.

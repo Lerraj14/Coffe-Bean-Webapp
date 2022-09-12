@@ -9,6 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="general.css">
+    <!-- <script src="https://www.paypal.com/sdk/js?client-id=ARSe1JC1Am_Cw3fUIH2RJFMnxaMrf_9-bztGHjbw6l0G6fv_OCdQ647JDNm56XCOESR8ve2DLMiot7Th"></script> -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AfQSMJkfUiiWVm_jZm5ULe4WOjn7U_LuWqoZwMhZPH9hgF30nYBRa-z9ZBNLA-sBM9Gy4dX4BNFerf22"></script>
     <script type='module' defer src="controller.js"></script>
     <title>Document</title>
 </head>
@@ -67,9 +69,20 @@
             <div class="btn-order-process">
                 <button class='btn-clear'>Clear</button>
                 <button class='order-total'></button>
-                <button class='btn-payorder'>Pay order </button>
+                <button class='btn-payorder'>Pay order</button>   
             </div>
+            <div id="paypal-button-container"></div>
         </div>
+   
     </div>
+
+    <!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="6DMA6PYUYCQ5Q">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form> -->
+        
+
 </body>
 </html>
